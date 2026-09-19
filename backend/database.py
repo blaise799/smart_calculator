@@ -4,20 +4,19 @@ from mysql.connector import Error
 
 
 def get_connection():
-
     try:
         connection = mysql.connector.connect(
-            host=os.getenv("MYSQL_HOST", "127.0.0.1"),
+            host=os.getenv("MYSQL_HOST"),
             port=int(os.getenv("MYSQL_PORT", "3306")),
-            user=os.getenv("MYSQL_USER", "root"),
-            password=os.getenv("MYSQL_PASSWORD", "poiuytrewq"),
-            database=os.getenv("MYSQL_DATABASE", "smart_calculator"),
-            connection_timeout=10,
-            use_pure=True
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE"),
+            ssl_disabled=False,
+            use_pure=True,
+            connection_timeout=10
         )
 
         print("MYSQL: Connected successfully")
-
         return connection
 
     except Error as e:
@@ -37,32 +36,25 @@ def save_calculation(expression, result):
     cursor = None
 
     try:
-        print("MYSQL: Starting save...")
-
         connection = get_connection()
 
         if connection is None:
-            print("MYSQL: Connection failed")
             return False
 
         cursor = connection.cursor()
 
-        sql = """
+        cursor.execute(
+            """
             INSERT INTO calculations
             (expression, result)
             VALUES (%s, %s)
-        """
-
-        cursor.execute(
-            sql,
+            """,
             (str(expression), str(result))
         )
 
         connection.commit()
 
-        print("MYSQL: INSERT successful")
         print("MYSQL: Calculation saved")
-
         return True
 
     except Error as e:
@@ -76,11 +68,8 @@ def save_calculation(expression, result):
         return False
 
     finally:
-
         if cursor:
             cursor.close()
 
         if connection:
             connection.close()
-
-        print("MYSQL: Connection closed")
