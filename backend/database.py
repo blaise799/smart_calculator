@@ -9,7 +9,7 @@ def get_connection():
             host=os.getenv("MYSQL_HOST"),
             port=int(os.getenv("MYSQL_PORT", "3306")),
             user=os.getenv("MYSQL_USER"),
-            password=os.getenv("MYSQL_PASSWORD"),
+            password=os.getenv("MYSQL_PASSWORD"),   
             database=os.getenv("MYSQL_DATABASE"),
             ssl_disabled=False,
             use_pure=True,
