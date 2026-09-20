@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://127.0.0.1:5000";
+
 function App() {
   const [display, setDisplay] = useState("");
   const [result, setResult] = useState("");
@@ -86,11 +90,10 @@ function App() {
 
     exp = exp.replace(
       /(\d+)!/g,
-      (_, value) =>
-        `factorial(${value})`
+      (_, value) => `factorial(${value})`
     );
 
-    if (!/^[0-9+\-*/().,\sA-Za-z_*]+$/.test(exp)) {
+    if (!/^[0-9+\-*/().,\sA-Za-z_*!]+$/.test(exp)) {
       throw new Error("Invalid expression");
     }
 
@@ -132,7 +135,7 @@ function App() {
 
       try {
         const response = await axios.post(
-          "http://127.0.0.1:5000/calculate",
+          `${API_URL}/calculate`,
           {
             expression,
             result: answer,
@@ -221,7 +224,6 @@ function App() {
     >
 
       {/* CALCULATOR */}
-
       <main className="calculator">
 
         <header className="top">
@@ -233,8 +235,11 @@ function App() {
             </div>
 
             <div>
-              <h1>SmartCalculator</h1>
-              <p>Scientific Calculator</p>
+              <h1>Smart Calculator</h1>
+
+              <p>
+                Free Online Scientific Calculator
+              </p>
             </div>
 
           </div>
@@ -251,6 +256,7 @@ function App() {
           </button>
 
         </header>
+
 
         {/* DISPLAY */}
 
@@ -272,7 +278,8 @@ function App() {
 
         </section>
 
-        {/* SCIENTIFIC */}
+
+        {/* SCIENTIFIC BUTTONS */}
 
         <section className="scientific-buttons">
 
@@ -325,6 +332,7 @@ function App() {
           </button>
 
         </section>
+
 
         {/* MAIN BUTTONS */}
 
@@ -412,6 +420,56 @@ function App() {
 
       </main>
 
+
+      {/* SEO CONTENT */}
+
+      <section className="seo-content">
+
+        <h2>
+          Smart Calculator
+        </h2>
+
+        <p>
+          Smart Calculator is a free online calculator
+          designed for fast and easy mathematical
+          calculations.
+        </p>
+
+        <h2>
+          Free Online Calculator
+        </h2>
+
+        <p>
+          Use Smart Calculator for addition,
+          subtraction, multiplication, division,
+          percentages, powers, and other everyday
+          mathematical calculations.
+        </p>
+
+        <h2>
+          Scientific Calculator
+        </h2>
+
+        <p>
+          Smart Calculator also provides scientific
+          functions including sine, cosine, tangent,
+          logarithms, natural logarithms, square roots,
+          powers, factorials, Pi, and Euler's number.
+        </p>
+
+        <h2>
+          Calculate Online on Any Device
+        </h2>
+
+        <p>
+          Smart Calculator works online on computers,
+          tablets, and mobile devices. No software
+          installation is required.
+        </p>
+
+      </section>
+
+
       {/* HISTORY */}
 
       <aside className="history">
@@ -419,16 +477,23 @@ function App() {
         <div className="history-header">
 
           <div>
+
             <span className="history-icon">
               ◷
             </span>
 
             <div>
-              <h2>History</h2>
+
+              <h2>
+                History
+              </h2>
+
               <p>
                 Recent calculations
               </p>
+
             </div>
+
           </div>
 
           {history.length > 0 && (
@@ -442,6 +507,7 @@ function App() {
 
         </div>
 
+
         <div className="history-list">
 
           {history.length === 0 ? (
@@ -452,7 +518,9 @@ function App() {
                 ∑
               </div>
 
-              <h3>No calculations yet</h3>
+              <h3>
+                No calculations yet
+              </h3>
 
               <p>
                 Your calculations will
