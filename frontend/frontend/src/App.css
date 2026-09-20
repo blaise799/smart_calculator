@@ -820,18 +820,3 @@ body {
     font-size: 15px;
   }
 }
-.seo-content {
-  width: min(900px, 92%);
-  margin: 40px auto;
-  padding: 30px;
-  line-height: 1.7;
-}
-
-.seo-content h2 {
-  margin-top: 28px;
-  margin-bottom: 10px;
-}
-
-.seo-content p {
-  margin-bottom: 18px;
-}

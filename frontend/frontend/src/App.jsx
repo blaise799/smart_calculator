@@ -421,54 +421,6 @@ function App() {
       </main>
 
 
-      {/* SEO CONTENT */}
-
-      <section className="seo-content">
-
-        <h2>
-          Smart Calculator
-        </h2>
-
-        <p>
-          Smart Calculator is a free online calculator
-          designed for fast and easy mathematical
-          calculations.
-        </p>
-
-        <h2>
-          Free Online Calculator
-        </h2>
-
-        <p>
-          Use Smart Calculator for addition,
-          subtraction, multiplication, division,
-          percentages, powers, and other everyday
-          mathematical calculations.
-        </p>
-
-        <h2>
-          Scientific Calculator
-        </h2>
-
-        <p>
-          Smart Calculator also provides scientific
-          functions including sine, cosine, tangent,
-          logarithms, natural logarithms, square roots,
-          powers, factorials, Pi, and Euler's number.
-        </p>
-
-        <h2>
-          Calculate Online on Any Device
-        </h2>
-
-        <p>
-          Smart Calculator works online on computers,
-          tablets, and mobile devices. No software
-          installation is required.
-        </p>
-
-      </section>
-
 
       {/* HISTORY */}
 
